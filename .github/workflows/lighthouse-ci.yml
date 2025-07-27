@@ -28,7 +28,7 @@ jobs:
           sleep 3
 
       - name: Run Lighthouse directly on home page
-        run: npx lighthouse http://localhost:8080/home.html --output html --output-path=home-lighthouse-report.html
+        run: npx lighthouse http://localhost:8080/home.html --output html --output-path=home-lighthouse-report.html --chrome-flags="--headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage"
 
 #      - name: Run Puppeteer + Lighthouse script
 #        run: node login-lighthouse.mjs
