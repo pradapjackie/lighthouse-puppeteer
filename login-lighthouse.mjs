@@ -6,7 +6,11 @@ const LOGIN_URL = 'http://localhost:8080/login.html';
 
 const browser = await puppeteer.launch({
     headless: true,
-    args: ['--remote-debugging-port=9222'],
+    args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--remote-debugging-port=9222'
+    ],
     defaultViewport: { width: 1280, height: 900 }
 });
 
