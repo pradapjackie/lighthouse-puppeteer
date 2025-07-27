@@ -1,0 +1,37 @@
+name: Lighthouse Home Page Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lighthouse-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm install puppeteer lighthouse serve
+
+      - name: Start local server
+        run: |
+          npx serve . -l 8080 > server.log 2>&1 &
+          sleep 3
+
+      - name: Run Puppeteer + Lighthouse script
+        run: node login-lighthouse.mjs
+
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: lighthouse-home-report.html

@@ -1,0 +1,31 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+server.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Reports and artifacts
+lighthouse-home-report.html
+lighthouse-form-report.html
+lighthouse-report.html
+*.report.html
+
+# Optional: OS-specific files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+
+# VSCode, JetBrains, and IDE configs
+.vscode/
+.idea/
