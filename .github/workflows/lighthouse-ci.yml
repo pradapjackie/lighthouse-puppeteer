@@ -27,8 +27,11 @@ jobs:
           npx serve . -l 8080 > server.log 2>&1 &
           sleep 3
 
-      - name: Run Puppeteer + Lighthouse script
-        run: node login-lighthouse.mjs
+      - name: Run Lighthouse directly on home page
+        run: npx lighthouse http://localhost:8080/home.html --output html --output-path=home-lighthouse-report.html
+
+#      - name: Run Puppeteer + Lighthouse script
+#        run: node login-lighthouse.mjs
 
       - name: Upload Lighthouse report
         uses: actions/upload-artifact@v4
